@@ -1,0 +1,57 @@
+Sales_Orders
+-------------
+idsales_orders
+order_date--------------------------show on front page
+buyer_address
+last_shipping_date
+tax_amount
+net_amount
+User_idRegister
+offers_idoffers
+Is_canceled
+reason
+cancel_date
+is_payment
+
+
+sales_product_details
+-----------------------
+sales_orders_idsales_orders
+product_idproduct
+Qty-----------------------------show on front page
+Price
+discount
+
+
+
+
+product
+------------
+idproduct
+pname------------------------- show on front page
+brand
+minimum_set_qut-pur 
+quantity_of_1_set
+MRP
+price
+description---------------show on front page
+image---------------------show on front page
+HSN_code
+Gst_rate
+subcategory_idsubcategory
+User_idRegister
+
+SELECT * FROM sales_product_details LEFT OUTER JOIN sales_orders ON sales_product_details.sales_orders_idsales_orders=idsales_orders LEFT OUTER JOIN product on product_idproduct=product.idproduct; 
+
+
+
+
+
+
+
+
+
+
+
+
+

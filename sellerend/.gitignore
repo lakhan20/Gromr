@@ -1,0 +1,4 @@
+documentation/
+composer.json
+node_modules
+.gitignore/

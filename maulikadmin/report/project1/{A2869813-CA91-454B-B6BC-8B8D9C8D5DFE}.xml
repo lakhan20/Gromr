@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2022/03/23" author="e.World Technology Ltd.">
+  <project id="{A2869813-CA91-454B-B6BC-8B8D9C8D5DFE}" file="" name="project1" product="PHPReportMaker" version="12.0" datetime="2022/03/23 14:25:49" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
+    <table id="admin" name="admin" caption="admin" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="area" name="area" caption="area" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="bank" name="bank" caption="bank" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="cart" name="cart" caption="cart" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="category" name="category" caption="category" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="city" name="city" caption="city" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="feedback" name="feedback" caption="feedback" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="image" name="image" caption="image" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="offers" name="offers" caption="offers" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="product" name="product" caption="product" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="rating" name="rating" caption="rating" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="return" name="return" caption="return" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="return_has_product" name="return_has_product" caption="return has product" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="sales_orders" name="sales_orders" caption="sales orders" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="sales_product_details" name="sales_product_details" caption="sales product details" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="state" name="state" caption="state" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="subcategory" name="subcategory" caption="subcategory" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="user" name="user" caption="user" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="wishlist" name="wishlist" caption="wishlist" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="product_report" name="product report" caption="product report" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="order_report" name="order report" caption="order report" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+  </project>
+</configuration>
