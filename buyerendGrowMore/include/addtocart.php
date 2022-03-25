@@ -4,7 +4,9 @@ $idReg=$_COOKIE['idRegister'];
 $uid=$_COOKIE['idRegister'];
 $sql2 = "SELECT * FROM cart JOIN product ON cart.product_idproduct=product.idproduct WHERE cart.User_idRegister=$idReg";
 $result2 = mysqli_query($conn,$sql2);
+
 $num2 = mysqli_num_rows($result2);
+
 if(isset($_POST['del']))
 {
     $id = $_POST['pid'];
@@ -12,7 +14,9 @@ if(isset($_POST['del']))
     $result = mysqli_query($conn,$sql);
     if($result)
     {
-        header ("Refresh:0");
+        echo "
+        <script>window.location.href='../buyerendGrowMore/website.php'</script>
+        ";
     }
 }
 ?>
@@ -38,7 +42,7 @@ if(isset($_POST['del']))
 												
 									<div class="product-img">
 	
-										<img src="'.$row2['image'].'"alt="Sorry " width="50px" height="50px">
+										<img src="../sellerend/'.$row2['image'].'"alt="Sorry " width="50px" height="50px">
 									</div>
                                             <form method="post">
 												<div class="product-body">
@@ -59,9 +63,17 @@ if(isset($_POST['del']))
             <small> <?php echo $num2;?> Item(s) selected</small>
             <h5>SUBTOTAL: <?php echo $total;?></h5>
         </div>
-        <div class="cart-btns">
+
+        <?php
+        if($num2 !=0){
+       ?>
+ <div class="cart-btns">
             <a href="checkout.php">Checkout <i class="fa fa-arrow-circle-right"></i></a>
         </div>
+       <?php     
+        }
+        ?>
+       
     </div>
 </div>
 <!-- <a href = delete.php?pid='.$row['product_idproduct'].'><button><i class="fa fa-close"> Delete </i></button></a> -->

@@ -1,14 +1,16 @@
 <?php
-    include 'include/header.php';
+    // include 'include/header.php';
     include 'include/db_connect.php';
-    $sql = "SELECT * FROM sales_orders";
-    $result = mysqli_query($conn,$sql);
+   $id= $_COOKIE['idRegister'];
+    $aa = "SELECT * FROM `sales_orders` WHERE `User_idRegister`=$id ORDER BY sales_orders.idsales_orders DESC";
+    $result = mysqli_query($conn,$aa);
     $row = mysqli_fetch_assoc($result);
     $uid=$_COOKIE['idRegister'];
 ?>
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    
   </head>
     <style>
       body {
@@ -50,7 +52,9 @@
         <ia class="checkmark">✓</ia>
       </div>
         <h1>Success</h1> 
-        <p>Your Order Placed Successfully .<br/> Your Order id is <?php echo $row['idsales_orders']?> .</p>
+        <p>Your Order Placed Successfully .<br/> Order number is <?php echo $row['idsales_orders']?> .</p><br>
+        <p><a href="website.php" class="btn btn--has-icon-after">Continue shopping</a></p>
+    
       </div>
     </body>
 </html>

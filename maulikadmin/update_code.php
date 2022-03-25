@@ -6,12 +6,11 @@ include 'include/connection.php';
         $cat_name = $_POST['cat_name'];
 
         $sql = "UPDATE `category` SET `categoryname` = '$cat_name' WHERE `idcategory` = '$cat_id'";
-        echo $sql;
         $result = mysqli_query($conn,$sql);
-        echo var_dump($result);
+
         if($result){
-            echo "updated";
-            header("location:category.php");
+            echo '';
+             header("location:category.php");
         }else{
             echo "fail";
         }
@@ -26,6 +25,8 @@ include 'include/connection.php';
         $res_subcat=mysqli_query($conn,$sql_subcat);
         if($res_subcat){
             header("location:sub_cat.php");
+        }else{
+            echo'fail';
         }
     }
 
@@ -61,4 +62,18 @@ include 'include/connection.php';
         
          
     // }
+?>
+<?php
+    // $isseller = $_GET['isseller'];
+    // $isrequest = $_GET['isrequest'];
+    // $idregister = $_GET['idregister'];
+
+
+    // $sqlis = "UPDATE `user` SET `is_seller`='$isseller',`is_request`='$isrequest' WHERE idRegister = $idregister";
+    // $resultis=mysqli_query($conn,$sqlis);
+
+    // if($resultis){
+    //     header("location:requests.php");
+    // }
+
 ?>

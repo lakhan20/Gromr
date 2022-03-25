@@ -60,9 +60,10 @@
          </ul>
          <ul class="sidebar-menu">
              <li>
-                 <a href="/admin/report/vendor/index.php">
+                 <a href="/admin/mainreport/aaa/index.php">
+
                      <i class="fa fa-chart-bar me-2"></i>&nbsp;
-                     <span>Report</span>
+                     <span>REPORT</span>
                  </a>
              </li>
          </ul>

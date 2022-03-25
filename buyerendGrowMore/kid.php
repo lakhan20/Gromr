@@ -69,7 +69,7 @@ $num = mysqli_num_rows($result);
 							<div class="col-md-3 col-xs-8">
 								<div class="product">
 									<div class="product-img">
-										<img src='.$row['image'].' alt="Sorry , for the error" height=200px width=150px>
+										<img src=../sellerend/'.$row['image'].' alt="Sorry , for the error" height=200px width=150px>
 									</div>
 									<div class="product-body">
 										<p class="product-category">'.$row['subcategoryname'].'</p>

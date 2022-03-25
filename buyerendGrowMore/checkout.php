@@ -2,43 +2,11 @@
 include 'include/header.php';
 include 'include/db_connect.php';
 $uid = $_COOKIE['idRegister'];
-$sql = "SELECT * FROM `cart` NATURAL join product WHERE cart.User_idRegister=$uid AND product.idproduct=cart.product_idproduct";
+$sql = "SELECT * FROM `cart`  join product on product.idproduct=cart.product_idproduct WHERE cart.User_idRegister=$uid";
 $result = mysqli_query($conn,$sql);
-
+// echo var_dump($result);
+// echo "<br>".$result;
 //$row = mysqli_fetch_assoc($result);
-if(isset($_POST['placeorder']))
-{
-    $gst = $_POST['tax'];
-    $taxable = $_POST['taxable'];
-    $subtotal = $_POST['subtotal'];
-    // $sql1 = "SELECT * FROM sales_orders";
-    // $result1 = mysqli_query($conn,$sql1);
-    $sql2 = "INSERT INTO `sales_orders`(`taxable_amount`,`tax_amount`, `total_amount` , `User_idRegister`, `is_payment`) VALUES ('$taxable','$gst','$subtotal','$uid','1')";
-    $result2 = mysqli_query($conn,$sql2);
-    if($result2)
-    {
-        $sql3="SELECT * FROM `sales_orders` WHERE User_idRegister = $uid ORDER BY idsales_orders DESC LIMIT 1";
-        $result3 = mysqli_query($conn,$sql3);
-        $row3= mysqli_fetch_assoc($result3);
-        $a = $row3['idsales_orders'];
-        // $sql4 ="SELECT * FROM cart Where User_idRegister=$uid";
-        // $result4 = mysqli_query($conn,$sql4);
-        while($row4 = mysqli_fetch_assoc($result))
-        {
-            $sql5 = "INSERT INTO `sales_product_details`(`sales_orders_idsales_orders`, `product_idproduct`, `Qty`, `Price`, `discount`) VALUES ('$a','$row4[product_idproduct]','$row4[qty]','$row4[price]','$row4[discount_rs]')";
-            $result5 = mysqli_query($conn,$sql5);
-            if($result5)
-            {
-                $sql6 = "DELETE FROM `cart` WHERE User_idRegister=$uid";
-                $result6 = mysqli_query($conn,$sql6);
-                if($result6)
-                {
-                    // header("Location:success.php");
-                }
-            }
-        }
-    }
-}
 ?>
 <!-- NAVIGATION -->
 <nav id="navigation">
@@ -89,55 +57,6 @@ if(isset($_POST['placeorder']))
         <!-- row -->
         <div class="row">
 
-            <!-- <div class="col-md-7"> -->
-            <!-- Billing Details -->
-            <!-- <div class="billing-details">
-							<div class="section-title">
-								<h3 class="title">Billing address</h3>
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="first-name" placeholder="First Name">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="last-name" placeholder="Last Name">
-							</div>
-							<div class="form-group">
-								<input class="input" type="email" name="email" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="address" placeholder="Address">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="city" placeholder="City">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="country" placeholder="Country">
-							</div>
-							<div class="form-group">
-								<input class="input" type="text" name="zip-code" placeholder="ZIP Code">
-							</div>
-							<div class="form-group">
-								<input class="input" type="tel" name="tel" placeholder="Telephone">
-							</div>
-							<div class="form-group">
-								<div class="input-checkbox">
-									<input type="checkbox" id="create-account">
-									<label for="create-account">
-										<span></span>
-										Create Account?
-									</label>
-									<div class="caption">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-										<input class="input" type="password" name="password" placeholder="Enter Your Password">
-									</div>
-								</div>
-							</div>
-						</div> -->
-            <!-- /Billing Details -->
-
-            <!-- </div> -->
-
-            <!-- Order Details -->
             <div class="col-md-8 order-details">
                 <div class="section-title text-center">
                     <h3 class="title">Your Order</h3>
@@ -289,10 +208,64 @@ if(isset($_POST['placeorder']))
         <!-- /container -->
     </div>
     <!-- /SECTION -->
+<?php
+    if(isset($_POST['placeorder']))
+{
+    // echo "heloo------------------------------------";
+    // echo $taxable;
+    // echo $gst;
+    // echo $subtotal;
+    // $gst = $gst;
 
+    // $taxable = $gst;
+    // $subtotal = $_POST['subtotal'];
+
+    // echo "-----------------".$taxable;
+    // $sql1 = "SELECT * FROM sales_orders";
+    // $result1 = mysqli_query($conn,$sql1);
+    
+ 
+    $date = date_create(date('Y-m-d'));
+    date_add($date, date_interval_create_from_date_string("5 days"));
+    $datee= date_format($date, "Y-m-d") ;
+     // echo $datee;
+    $sql2 = "INSERT INTO `sales_orders`(`last_shipping_date`,`taxable_amount`,`tax_amount`, `total_amount` , `User_idRegister`, `is_payment`) VALUES ('$datee','$taxable','$gst','$subtotal','$uid','1')";
+    $result2 = mysqli_query($conn,$sql2);
+    if($result2)
+    {
+
+        $sql3="SELECT * FROM `sales_orders` WHERE User_idRegister = $uid ORDER BY idsales_orders DESC LIMIT 1";
+        $result3 = mysqli_query($conn,$sql3);
+        $row3= mysqli_fetch_assoc($result3);
+        $a = $row3['idsales_orders'];
+        
+        // $sql4 ="SELECT * FROM cart Where User_idRegister=$uid";
+        // $result4 = mysqli_query($conn,$sql4);
+        while($row4 = mysqli_fetch_assoc($result))
+        {
+            $sql5 = "INSERT INTO `sales_product_details`(`sales_orders_idsales_orders`, `product_idproduct`, `Qty`, `Price`, `discount`) VALUES ('$a','$row4[product_idproduct]','$row4[qty]','$row4[price]','$row4[discount_rs]')";
+            $result5 = mysqli_query($conn,$sql5);
+        }
+            
+                
+                $sql6 = "DELETE FROM `cart` WHERE User_idRegister=$uid";
+                $result6 = mysqli_query($conn,$sql6);
+                if($result6)
+                {
+                    
+                    echo "<script>
+                    window.location.href='success.php';
+                    </script>";
+                }
+            
+      
+    }
+
+}
+?>
     <?php
 
-include'include/footer.php';
+include 'include/footer.php';
 ?>
     <!-- jQuery Plugins -->
     <script src="js/jquery.min.js"></script>

@@ -2,7 +2,7 @@
 include'include/header.php';
 include'include/db_connect.php';
 $uid=$_COOKIE['idRegister'];
-$sql = "SELECT * FROM `wishlist` NATURAL JOIN product  NATURAL JOIN subcategory WHERE wishlist.User_idRegister=$uid AND wishlist.product_idproduct=product.idproduct and product.subcategory_idsubcategory=subcategory.idsubcategory";
+$sql = "SELECT * FROM wishlist JOIN product on wishlist.product_idproduct=product.idproduct JOIN subcategory ON product.subcategory_idsubcategory=subcategory.idsubcategory WHERE wishlist.User_idRegister=$uid";
 $result = mysqli_query($conn,$sql);
 $num = mysqli_num_rows($result);
 

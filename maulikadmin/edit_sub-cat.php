@@ -36,8 +36,8 @@ include "include/connection.php";
                         <h4>Select Category :</h4>
                     </label><br>
                     <select name="subid" class="form-control" required>
-                        <option selected disabled value="">Please select category...
-                            <?php
+
+                        <?php
                   $selectcategory="SELECT * FROM category";
                   $res=mysqli_query($conn,$selectcategory);
                   $num=mysqli_num_rows($res);
@@ -51,7 +51,7 @@ include "include/connection.php";
                     </select>
 
                 </div>
-                <input type="submit" name="updatesubcat" class="btn btn-primary" value="Update" />
+                <input type="submit" name="updatesubcat" class="btn btn-primary" value="Update Sub-Category" />
             </form>
 
         </form>

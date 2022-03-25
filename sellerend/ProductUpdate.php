@@ -130,6 +130,7 @@ include "include/sidebar.php";
 if(isset($_POST['updateproduct'])) {
    $target_dir = "uploads/";
    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+  //  .date("h:i:sa")
   //  echo $target_file;
    $uploadOk = 1;
    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -188,13 +189,18 @@ return;
    if($uploadOk==0){
        echo "file uploading failed...";
    }
+
    else{
+    // $newfilename= rename($target_file,$target_file.date("h:i:sa"));
+
+    //  $newfilename1=round(microtime(true).'.'.end($_FILES["image"]["tmp_name"]));
        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
            echo "The file ". htmlspecialchars( basename( $_FILES["image"]["name"])). " has been uploaded.";
          } else {
            echo "Sorry, there was an error uploading your file.";
          }
    }
+
 
 }
 

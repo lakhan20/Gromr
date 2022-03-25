@@ -11,7 +11,7 @@ if (isset($_POST['query'])) {
                        
                           <th><img src="' . $res["image"] . '" height="100" width="100">' . '</td>
                                    </a> </th>
-                                     <th><a href="product.php">' . $res["pname"] . '</a></th>  
+                                     <th><a href="product.php?pid='.$res['idproduct'].'&sellerid='.$res['User_idRegister'].'">' . $res["pname"] . '</a></th>  
                                    
                               </tr>  
                                ';

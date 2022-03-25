@@ -44,6 +44,16 @@ include "include/connection.php";
 
 
 ?>
+<!-- <script>
+function alertfun() {
+    <
+    div class = "alert alert-success"
+    role = "alert" >
+        This is a success alert— check it out!
+        <
+        /div>
+}
+</script> -->
 <?php
 
 include 'include/footer.php';

@@ -123,15 +123,16 @@ else
                                         <?php //echo $u_name; ?>
                                         <small>Member since Nov. 2012</small>
                                     </p>
+                                    <div class="pull-left">
+                                        <a href="profile.php" class="btn btn-default btn-dark">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="logout.php" class="btn btn-default btn-dark">Sign out</a>
+                                    </div>
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user">
-                                    <div class="pull-left">
-                                        <a href="profile.php" class="btn btn-default btn-flat">Profile</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
-                                    </div>
+
                                 </li>
                             </ul>
                         </li>

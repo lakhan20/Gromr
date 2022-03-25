@@ -72,13 +72,20 @@ include 'db_connect.php';
                 </ul>
                 <ul class="header-links pull-right">
                     <?php
-                    $sql2 = "SELECT is_seller FROM `user` WHERE user.idRegister = $_COOKIE[idRegister]";
+                    $sql2 = "SELECT * FROM `user` WHERE user.idRegister = $_COOKIE[idRegister]";
                     $result2 = mysqli_query($conn,$sql2);
                     $row2= mysqli_fetch_assoc($result2);
-                    if($row2 == 1)
+                    if($row2['is_seller'] == 1)
                     {
+                        setcookie("idRegister",$row2['idRegister'],time() + 86400,"/");
+
+                        setcookie("isSeller",$row2['is_seller'],time() + 86400,"/");
+
                         echo'
-                    <li><a href="#"> Seller </a></li>';
+                    <li><a href="../sellerend/home.php">swith to seller </a></li>';
+                    }
+                    else{
+
                     }
                     ?>
                     <li>
@@ -90,7 +97,7 @@ include 'db_connect.php';
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <ul class="abc">
                                     <li> <a class="dropdown-item" href="#">Your Profile</a></li><br>
-                                    <li> <a class="dropdown-item" href="seller.php">Seller</a></li><br>
+                                    <li> <a class="dropdown-item" href="seller.php?is_request=<?php echo $row2['is_request']?>&is_seller=<?php echo $row2['is_seller'] ?>">Seller</a></li><br>
                                     <li> <a class="dropdown-item" href="order.php">Orders</a></li><br>
                                     <li> <a class="dropdown-item" href="#">Returns</a></li><br>
                                     <li> <a class="dropdown-item" href="logout.php">Log Out</a></li><br>
@@ -140,8 +147,9 @@ include 'db_connect.php';
                                         class="anm anm-times-l"></i></button>
 
                             </div>
-                            /
+                            
                         </div>
+                       <!-- <a href="" id="one">Helo</a> -->
                         <!--End Search Form Drawer-->
                         <!-- <div class="site-header__search"> -->
 
@@ -172,6 +180,11 @@ include 'db_connect.php';
                                                 $('#search_result').css('display',
                                                     'block');
                                             });
+                                           
+                                            // $('#search_result').on('click', function(event) {
+                                            // alert($(this).attr('href'));
+                                            // return false;
+                                        // });
                                         }
                                     });
                                 } else {

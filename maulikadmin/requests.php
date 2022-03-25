@@ -27,10 +27,10 @@ include "include/connection.php";
         <table class="table table-hover table-bordered" id="employee_data">
             <thead>
                 <tr>
-                    <th scope="col">SRNO</th>
+                    <th scope="col">SRNO.</th>
                     <th scope="col">BUSINESS NAME</th>
-                    <th scope="col">MO.NO</th>
-                    <th scope="col">GST.NO</th>
+                    <th scope="col">MO. NO.</th>
+                    <th scope="col">GST NO.</th>
                     <th scope="col">ADDRESS</th>
                     <th scope="col">EMAIL ID</th>
                     <th scope="col">ACCEPT</th>
@@ -51,8 +51,8 @@ include "include/connection.php";
                         <td>". $rows['gst_number'] ."</td>
                         <td>". $rows['address'] ."</td>
                         <td>". $rows['email_id'] ."</td>
-                        <td> <a href='acceptupdatecode.php?isseller=1&isrequest=0&idregister=".$rows['idRegister']."' class='btn btn-primary'>Accept</a> </td>
-                        <td> <a href='acceptupdatecode.php?isseller=0&isrequest=0&idregister=".$rows['idRegister']."' class='btn btn-danger'>Decline</a> </td>
+                        <td> <a onClick=\"javascript: return confirm('Are you sure you want to accept this request?');\" href='update_code.php?isseller=1&isrequest=0&idregister=".$rows['idRegister']."' class='btn btn-primary'>Accept</a> </td>
+                        <td> <a onClick=\"javascript: return confirm('Are you sure you want to decline this request?');\" href='update_code.php?isseller=0&isrequest=0&idregister=".$rows['idRegister']."' class='btn btn-danger'>Decline</a> </td>
                     </tr>";
                     $cnt++;   
                 }
@@ -63,6 +63,18 @@ include "include/connection.php";
     </section>
     <!-- /.content -->
 </div>
+<script>
+// function confirmbox() {
+//     if (confirm("Are you sure You want to accept this order ?")) {
+//         return 1;
+//     } else {
+//         return 0;
+//         console.log("elsee...");
+//         window.location.href = "orders.php";
+//     }
+// }
+// 
+</script>
 <?php
 
 include 'include/footer.php';
